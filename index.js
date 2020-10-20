@@ -51,8 +51,8 @@ app.get('/', async function(req, res) {
 app.post('/reg-number', async function(req, res) {
   var regEntered = req.body.reg;
   var regList = {
+   addReg : await registrations.addRegistrations(regEntered),
    getReg : await registrations.getRegistrations(),
-   addReg : await registrations.addRegistrations(regEntered)
   }
   //console.log(await registrations.getRegistrations())
 
