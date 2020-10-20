@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="row">
+            <div class="">
+                <h1>Registration Numbers</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <label for="">Registration Numbers:</label>
+            </div>
+        </div>
+        <form action="/reg-number" method="POST">
+        <div class="row">
+            <div class="col-12">
+                <input type="text" name="reg" value="" placeholder="enter 'Registration'" class="enterReg">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <button class="addBtn" type="submit" value="button">Add</button>
+
+        </div>
+</form>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="filter">
+                    <strong>Filter by town</strong>
+                    <input type="radio" name="town" class="radioBtn" value="">Show all
+                    <input type="radio" name="town" class="radioBtn" value="CY">Bellville
+                    <input type="radio" name="town" class="radioBtn" value="CJ">Paarl
+                    <input type="radio" name="town" class="radioBtn" value="CA"> Cape Town
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-12">
+            <button class="showBtn" type="button" value="button">Show</button>
+
+        </div>
+
+        <div class="row">
+            <div class="col-2">
+               {{#each regList}}
+                <ul class="reg">
+                 <li>{{this.reg_num}}</li>   
+                </ul>
+                {{/each}}
+            </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
