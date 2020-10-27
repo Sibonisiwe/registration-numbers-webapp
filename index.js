@@ -57,9 +57,6 @@ app.post('/', async function (req, res) {
 
 if (!regEntered) {
     req.flash('info', 'Please enter a registration number');
-}
-else if (!regEntered === false){
-  req.flash('info', 'Please enter valid registration number' )
 } else {
   var regList = {
     addReg: await registrations.addRegistrations(regEntered),
