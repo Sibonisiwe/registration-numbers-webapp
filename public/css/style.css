@@ -1,12 +1,78 @@
-.reg li {
-    border-radius: 7px;
-    border: 2px solid black;
-    padding: 1em;
-    text-align-last: center;
-    background-color: yellow;
-    font-size: xx-small;
-    margin-bottom: 1em;
-    list-style: none;
-	
+body {
+    background-color: dimgray;
+    padding-top: 2em;
+}
+
+.container {
+    
+    background-color: linen;
+    text-align: center;
+    padding: 2em; 
+    border-radius: 3em;
+    margin: auto;
+    width: 1000px;
+      height: 500px;
 
 }
+
+.regs ul li {
+
+    border-radius: 7px;
+    border: 2px solid black;
+    padding: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    background-color: yellow;
+    font-size: medium;
+    list-style: none;
+}
+
+.reg {
+    display: inline-flex;
+}
+
+.enterReg {
+    margin-left: 20em;
+    border-radius: 7px;
+    padding: 5px;
+    width: 50%;
+}
+
+.addBtn {
+    /* background-color: aquamarine; */
+    color: black;
+    cursor: pointer;
+    float: center;
+    margin-right: 20em;
+    border-radius: 7px;
+    padding: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+.filter {
+    font-size: large;
+}
+
+.showBtn {
+    /* background-color: ; */
+    color: black;
+    cursor: pointer;
+    float: center;
+    border-radius: 7px;
+    padding: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+.flashMsg {
+    padding: 15px;
+    border-radius: 3em;
+    background-color: lightgray;
+    color: red;
+    font-size: larger;
+    margin-bottom: 10px;
+    border: red;
+  }

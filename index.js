@@ -44,43 +44,56 @@ app.use(bodyParser.json())
 
 app.use(express.static('public'));
 
-app.get('/', async function(req, res) {
-  res.render('index')
-})
-
-app.post('/reg-number', async function(req, res) {
-  var regEntered = req.body.reg;
-  var regList = {
-   addReg : await registrations.addRegistrations(regEntered),
-   getReg : await registrations.getRegistrations(),
-  }
-  //console.log(await registrations.getRegistrations())
+app.get('/', async function (req, res) {
 
   res.render('index', {
-    regList
-  
   })
 });
 
 
+app.post('/', async function (req, res) {
+  var regEntered = req.body.reg;
+
+
+if (!regEntered) {
+    req.flash('info', 'Please enter a registration number');
+}
+else if (!regEntered === false){
+  req.flash('info', 'Please enter valid registration number' )
+} else {
+  var regList = {
+    addReg: await registrations.addRegistrations(regEntered),
+    getReg: await registrations.getRegistrations(),
+  }
+}
+  res.render('index', {
+    regList
+  })
+});
+
+
+app.post('/reg-num', async function (req, res){
+  var towns = req.body.town;
+  if (!towns) {
+    req.flash('info', 'Please select a town');
+
+} else {
+  var filteredTown = {
+    filter: await registrations.filters(towns)
+  }
+}
+  res.render('index', {
+    filteredTown
+  })
+}); 
 
 
 
 
 
 
+const PORT = process.env.PORT || 3003;
 
-
-
-
-
-
-
-
-
-
-const PORT = process.env.PORT || 3002;
-
-  app.listen(PORT, function () {
-    console.log('App starting on port:', PORT);
-  });
+app.listen(PORT, function () {
+  console.log('App starting on port:', PORT);
+})

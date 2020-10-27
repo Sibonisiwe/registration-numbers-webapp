@@ -5,11 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    
+
 </head>
 
 <body>
     <div class="container">
+
+        <div class="row">
+            <div class="col-12">
+                {{#if messages.info }}
+                <span class="flashMsg">{{messages.info}}</span>
+                {{/if}}
+            </div>
+        </div>
 
         <div class="row">
             <div class="">
@@ -17,54 +25,74 @@
             </div>
         </div>
 
-        <div class="row">
+ 
+        {{!-- <div class="row">
             <div class="col-12">
                 <label for="">Registration Numbers:</label>
             </div>
-        </div>
-        <form action="/reg-number" method="POST">
+        </div> --}}
+        <form action="/" method="POST">
+            <div class="row">
+                <div class="col-6">
+                    <input type="text" name="reg" value="" placeholder="enter 'Registration'" class="enterReg">
+                </div>
+
+
+                <div class="col-6">
+                    <button class="addBtn" type="submit" value="button">ADD</button>
+
+                </div>
+            </div>
+        </form>
+
+        <form action="/reg-num" method="POST">
+            <div class="row">
+                <div class="col-12">
+                    <div class="filter">
+                        <strong>Filter by town</strong>
+                        <input type="radio" name="town" class="radioBtn" value="">Show all
+                        <input type="radio" name="town" class="radioBtn" value="CY">Bellville
+                        <input type="radio" name="town" class="radioBtn" value="CJ">Paarl
+                        <input type="radio" name="town" class="radioBtn" value="CA"> Cape Town
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12">
+                <button class="showBtn" type="submit">SHOW</button>
+
+            </div>
+        </form>
+
+
         <div class="row">
             <div class="col-12">
-                <input type="text" name="reg" value="" placeholder="enter 'Registration'" class="enterReg">
-            </div>
-        </div>
-
-        <div class="col-12">
-            <button class="addBtn" type="submit" value="button">Add</button>
-
-        </div>
-</form>
-
-        <div class="row">
-            <div class="col-6">
-                <div class="filter">
-                    <strong>Filter by town</strong>
-                    <input type="radio" name="town" class="radioBtn" value="">Show all
-                    <input type="radio" name="town" class="radioBtn" value="CY">Bellville
-                    <input type="radio" name="town" class="radioBtn" value="CJ">Paarl
-                    <input type="radio" name="town" class="radioBtn" value="CA"> Cape Town
+                <div class="regs">
+                    {{#each regList.getReg}}
+                    <ul class="reg">
+                        <li>{{this.reg_num}}</li>
+                    </ul>
+                    {{/each}}
                 </div>
             </div>
         </div>
 
 
-
-        <div class="col-12">
-            <button class="showBtn" type="button" value="button">Show</button>
-
-        </div>
-
         <div class="row">
-            <div class="col-2">
-               {{#each regList}}
-                <ul class="reg">
-                 <li>{{this.reg_num}}</li>   
-                </ul>
-                {{/each}}
-            </div>
+            <div class="col-12">
+                <div class="regs">
+                    {{#each filteredTown.filter}}
+                    <ul class="reg">
+                        <li>{{this.reg_num}}</li>
+                    </ul>
+                    {{/each}}
+                </div>
             </div>
         </div>
+
 
     </div>
 </body>
+
 </html>
