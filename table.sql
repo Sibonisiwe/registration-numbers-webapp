@@ -13,6 +13,6 @@ INSERT INTO store_towns(towns, strings) VALUES ('Cape Town', 'CA');
 INSERT INTO store_towns(towns, strings) VALUES ('Bellville', 'CY');
 INSERT INTO store_towns(towns, strings) VALUES ('Paarl', 'CJ');
 
-INSERT INTO store_towns(towns, strings) VALUES ('Cape Town', 'CA');
+-- INSERT INTO store_towns(towns, strings) VALUES ('Cape Town', 'CA');
 
-INSERT INTO reg_numbers(reg_num, strings) VALUES ('CA 12344', 'CA');
+-- INSERT INTO reg_numbers(reg_num, strings) VALUES ('CA 12344', 'CA');
