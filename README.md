@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/Sibonisiwe/registration-numbers-webapp.svg?branch=master)](https://travis-ci.org/Sibonisiwe/registration-numbers-webapp)
