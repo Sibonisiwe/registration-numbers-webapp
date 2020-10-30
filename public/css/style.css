@@ -55,8 +55,29 @@ body {
     font-size: large;
 }
 
+.radioBtn {
+    cursor: pointer;
+    
+}
+
+.radioBtn:checked {
+  height: 20px;
+  width: 20px;
+}
+
 .showBtn {
     /* background-color: ; */
+    color: black;
+    cursor: pointer;
+    float: center;
+    border-radius: 7px;
+    padding: 5px;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+.clearBtn {
     color: black;
     cursor: pointer;
     float: center;

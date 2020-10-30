@@ -5,6 +5,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 
 const Registrations = require('./reg-fac');
+const Reg = require('./reg')
 const pg = require("pg");
 const Pool = pg.Pool;
 const connectionString = process.env.DATABASE_URL || 'postgresql://codex:codex123@localhost:5432/registration_numbers';
@@ -12,7 +13,9 @@ const pool = new Pool({
   connectionString
 });
 
-registrations = Registrations(pool)
+const registrations = Registrations(pool);
+const reg = Reg(registrations);
+
 const app = express();
 
 
@@ -44,47 +47,19 @@ app.use(bodyParser.json())
 
 app.use(express.static('public'));
 
-app.get('/', async function (req, res) {
-
-  res.render('index', {
-  })
-});
+app.get('/', reg.homeRoute)  
+ 
 
 
-app.post('/', async function (req, res) {
-  var regEntered = req.body.reg;
+app.post('/', reg.addRegList) 
+  
 
 
-if (!regEntered) {
-    req.flash('info', 'Please enter a registration number');
-} else {
-  var regList = {
-    addReg: await registrations.addRegistrations(regEntered),
-    getReg: await registrations.getRegistrations(),
-  }
-}
-  res.render('index', {
-    regList
-  })
-});
 
+app.post('/reg-num', reg.filteredList)
+  
 
-app.post('/reg-num', async function (req, res){
-  var towns = req.body.town;
-  if (!towns) {
-    req.flash('info', 'Please select a town');
-
-} else {
-  var filteredTown = {
-    filter: await registrations.filters(towns)
-  }
-}
-  res.render('index', {
-    filteredTown
-  })
-}); 
-
-
+app.get('/clear', reg.clearList) 
 
 
 
