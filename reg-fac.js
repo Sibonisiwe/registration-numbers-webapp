@@ -50,7 +50,7 @@ module.exports = function Registrations(pool) {
             return filteredRegList.rows
 
         }
-        else if (reg === "") {
+        else if (reg === "all") {
             const filteredRegList = await pool.query(`SELECT reg_num FROM reg_numbers`);
             console.log(filteredRegList.rows);
             return filteredRegList.rows
