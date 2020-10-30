@@ -1,12 +1,13 @@
 CREATE TABLE store_towns(
-    strings varchar not null primary key, 
+    id serial not null primary key,
+    strings varchar not null, 
     towns varchar not null
 );
 
 CREATE TABLE reg_numbers(
     reg_num text not null,
-    reg_strings varchar,
-    FOREIGN KEY(reg_strings) REFERENCES store_towns(strings)
+    reg_strings int,
+    FOREIGN KEY(reg_strings) REFERENCES store_towns(id)
 );
 
 INSERT INTO store_towns(towns, strings) VALUES ('Cape Town', 'CA');
