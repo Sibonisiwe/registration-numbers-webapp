@@ -36,16 +36,19 @@ module.exports = function Reg(registrations) {
 
     async function filteredList(req, res) {
         var towns = req.body.town;
+        var filter;
         if (!towns) {
             req.flash('info', 'Please select a town');
 
-        } else {
-            var filteredTown = {
-                filter: await registrations.filters(towns)
-            }
+        } else if(towns === 'all'){
+            filter = await registrations.getRegistrations()
+
+        }
+        else {
+                 filter = await registrations.filters(towns)
         }
         res.render('index', {
-            filteredTown
+            filteredTown : filter 
         });
     }
 

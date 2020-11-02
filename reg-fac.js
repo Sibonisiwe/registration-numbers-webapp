@@ -17,7 +17,7 @@ module.exports = function Registrations(pool) {
                 console.log(townId)
                
                     await pool.query(`INSERT INTO reg_numbers(reg_num, reg_strings) VALUES ($1, $2)`,[regNumbers, townId]);
-            }
+            } 
         }
 
          async function getTownId(id){
@@ -27,6 +27,7 @@ module.exports = function Registrations(pool) {
          }
     async function getRegistrations() {
         var regs = await pool.query(`SELECT reg_num FROM reg_numbers`);
+        console.log(regs.rows)
         return regs.rows;
     }
 
