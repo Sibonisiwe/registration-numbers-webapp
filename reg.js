@@ -12,10 +12,9 @@ module.exports = function Reg(registrations) {
     async function addRegList(req, res) {
         let regEntered = req.body.reg;
         let regNumbers = regEntered.toUpperCase()
-        console.log(regNumbers);
+        //console.log(regNumbers);
         var regex = /C[AYJ]\s\d{3,6}\D\d{3,9}|C[AYJ]\s\d{3,6}/gi
         var result = await regex.test(regNumbers);
-        // var id = await registrations.getTownId(regEntered)
         //console.log(id)
         if (!regNumbers) {
             req.flash('info', 'Please enter a registration number');
@@ -53,8 +52,11 @@ module.exports = function Reg(registrations) {
     }
 
         async function clearList(req, res) {
-            await registrations.clearReg();
+            var clear = await registrations.clearReg();
+            if (clear) {
+                req.flash('error', 'registrations list has been cleared');
             res.redirect('/')
+            }
 
         }
 

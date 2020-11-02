@@ -97,3 +97,14 @@ body {
     margin-bottom: 10px;
     border: red;
   }
+
+  .flashSuccess {
+    padding: 15px;
+    border-radius: 3em;
+    background-color: lightgray;
+    color: green;
+    font-weight: bolder;
+    font-size: larger;
+    margin-bottom: 10px;
+
+  }

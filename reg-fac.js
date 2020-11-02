@@ -14,7 +14,7 @@ module.exports = function Registrations(pool) {
             
             if (regEntered < 1) {
                 var townId = await getTownId(regNumbers)
-                console.log(townId)
+                //console.log(townId)
                
                     await pool.query(`INSERT INTO reg_numbers(reg_num, reg_strings) VALUES ($1, $2)`,[regNumbers, townId]);
             } 
@@ -27,15 +27,12 @@ module.exports = function Registrations(pool) {
          }
     async function getRegistrations() {
         var regs = await pool.query(`SELECT reg_num FROM reg_numbers`);
-        console.log(regs.rows)
         return regs.rows;
     }
 
     async function filters(reg) {
        var storedId = await getTownId(reg)
-       console.log(storedId)
             const filteredRegList = await pool.query(`SELECT reg_num FROM reg_numbers WHERE reg_strings = $1`,[storedId]);
-
             return filteredRegList.rows
         
     }

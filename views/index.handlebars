@@ -20,6 +20,14 @@
         </div>
 
         <div class="row">
+            <div class="col-12">
+                {{#if messages.error}}
+                <span class="flashSuccess">{{messages.error}}</span>
+                {{/if}}
+            </div>
+        </div>
+
+        <div class="row">
             <div class="">
                 <h1>Registration Numbers</h1>
             </div>
